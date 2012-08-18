@@ -1,4 +1,6 @@
 // Create Beacon
 $(function() {
-	console.log("create")
+	$("create").bind("click", function(){
+		console.log("create")
+	})
 })
