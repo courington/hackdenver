@@ -24,4 +24,12 @@ class BeaconsController < ApplicationController
       user:  beacon.user
     }.to_json
   end
+
+  def destroy
+    if not params[:id].blank?
+      if beacon = Beacon.first(:conditions => ['id = ?', params[:id]])
+        beacon.destroy
+      end
+    end
+  end
 end
