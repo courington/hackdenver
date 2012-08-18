@@ -12,7 +12,7 @@ $(function() {
 		/*Create an object for options*/ 
 		var options = {
 			elt               : document.getElementById('map'),
-			zoom              : 10,
+			zoom              : 14,
 			latLng            : { lat : lat, lng : lng },
 			mtype             : 'map',
 			bestFitMargin     : 0, /* margin offset from the map viewport when applying a bestfit on shapes*/
@@ -26,7 +26,7 @@ $(function() {
 		$.getJSON('/beacons', { lat: lat, lng: lng }, function(response) {
 			$.each(response, function(i, beacon) {
 				 var info = new MQA.Poi({ lat:beacon.lat, lng:beacon.lng });
-				 info.infoContentHTML = beacon.user.name;
+				 //info.infoContentHTML = beacon.user.name;
 				 map.addShape(info);
 			});
 		});

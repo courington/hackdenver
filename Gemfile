@@ -5,6 +5,7 @@ gem 'rails' , '3.2.8'
 
 gem 'mongo_mapper'
 gem 'bson_ext'
+gem 'faker'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -14,3 +15,4 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'cucumber-rails', '1.2.1', require: false
