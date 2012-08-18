@@ -1,0 +1,9 @@
+<% if not @current_user.blank? %>
+    Logged in as <%= @current_user.email %><br/><%= link_to 'log out', :action => :destroy %>
+<% else %>
+    <%= form_for(@session) do |f| %>
+        <span>Email</span>
+        <%= f.text_field :email, :placeholder => 'Email' %>
+        <%= f.submit 'Login' %>
+    <% end %>
+<% end %>
