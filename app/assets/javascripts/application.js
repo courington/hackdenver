@@ -26,7 +26,7 @@ $(function() {
 		$.getJSON('/beacons', { lat: lat, lng: lng }, function(response) {
 			$.each(response, function(i, beacon) {
 				 var info = new MQA.Poi({ lat:beacon.lat, lng:beacon.lng });
-				 info.infoContentHTML = beacon.user.name;
+				 //info.infoContentHTML = beacon.user.name;
 				 map.addShape(info);
 			});
 		});
