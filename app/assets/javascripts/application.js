@@ -85,7 +85,7 @@ $(function() {
           beacon.find('.twitter').hide();
           beacon.find('.name').text(response.user.first_name + ' ' + response.user.last_name);
           beacon.find('.description').text(response.beacon.description);
-          beacon.find('.duration').text(response.beacon.duration + ' hours');
+          beacon.find('.duration').text("I'll be around for " + response.beacon.duration + " hours");
           if (response.twitter) {
             console.log(response.twitter);
             console.log('https://api.twitter.com/1/users/profile_image?screen_name=' + response.twitter.username + '&size=mini');
