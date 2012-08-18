@@ -1,9 +1,13 @@
+<h1>Nomabi</h1>
+
 <% if not @current_user.blank? %>
     Logged in as <%= @current_user.email %><br/><%= link_to 'log out', :action => :destroy %>
 <% else %>
     <%= form_for(@session) do |f| %>
         <span>Email</span>
-        <%= f.text_field :email, :placeholder => 'Email' %>
-        <%= f.submit 'Login' %>
+        <br>
+        <%= f.email_field :email, :placeholder => 'Email' %>
+        <br>
+        <%= f.button 'Login', type: "submit" %>
     <% end %>
 <% end %>

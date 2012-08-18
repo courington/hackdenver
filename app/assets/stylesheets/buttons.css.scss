@@ -1,9 +1,9 @@
 //buttons
 button {
-	background: $main-green;
+	background: $main-yellow;
 	font-family: $main-font;
-	padding: $small-font $big-font;
-	border: 1px solid darken($main-green, 25%);
+	padding: 5px 10px 5px 10px;
+	border: 1px solid darken($main-yellow, 5%);
 	@include border-radius($radius);
 	@include transition($tranny);
 	@include button-shading;
@@ -12,5 +12,5 @@ button {
 button:hover,
 button:focus {
 	outline: none;
-	background: darken($main-green, 10%);
+	background: darken($main-yellow, 5%);
 }

@@ -2,12 +2,7 @@
 $(function() {
 
 	var destoryBeaconPoi = function createBeaconPoi(resp){
-		var me= new MQA.Poi({lat:resp.lat, lng:resp.lng }) ;
-		var icon=new MQA.Icon("http://developer.mapquest.com/content/documentation/common/images/smiley.png",32,52);
-		me.setIcon(icon);
-		me.setShadowOffset({x:10,y:-25});
 
-		map.addShape(me)
 	};
 
 	var destroy = function startBeacon(){
@@ -18,7 +13,7 @@ $(function() {
     		dataType: 'json',
 		    success: function(resp){ 
 		    	console.log(resp);
-		    	//createBeaconPoi(resp);
+		    	//destoryBeaconPoi(resp);
 		    },
 		    error: function(resp){
 		    	console.log(resp);

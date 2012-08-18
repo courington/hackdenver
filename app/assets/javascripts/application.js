@@ -10,6 +10,13 @@ $(function() {
 
 		var lat = location.coords.latitude, lng = location.coords.longitude;
 
+		// XXX hack append lat/lng to new beacon url
+		$('#newBeacon').each(function() {
+			var link = $(this);
+			link.attr('href', link.attr('href') + '?lat='+lat+'&lng='+lng);
+		});
+		$('#beaconNav').show();
+
 		/*Create an object for options*/ 
 		var options = {
 			elt               : document.getElementById('map'),
