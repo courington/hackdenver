@@ -1,7 +1,7 @@
 class BeaconsController < ApplicationController
 
   def index
-    render json: Beacon.all.to_json
+    render json: Beacon.all.as_json(include: :user)
   end
 
   def create
