@@ -25,8 +25,7 @@ $(function() {
 
     // Add your location pin
     var info = new MQA.Poi({ lat:lat, lng:lng });
-    info.infoTitleHTML = 'Your Location';
-    info.infoContentHTML = '<a href="#">Launch Beacon!</a>';
+    info.infoContentHTML = 'Your Location<br/><a href="#">Launch Beacon!</a>';
     var icon=new MQA.Icon('http://www.mapquestapi.com/staticmap/geticon?uri=poi-blue_1.png',20,29);
     info.setIcon(icon);
     map.addShape(info);
@@ -35,8 +34,10 @@ $(function() {
 		$.getJSON('/beacons', { lat: lat, lng: lng }, function(response) {
 			$.each(response, function(i, beacon) {
 				 var info = new MQA.Poi({ lat:beacon.lat, lng:beacon.lng });
-				 info.infoTitleHTML = beacon.user.first_name + ' ' + beacon.user.last_name;
-				 info.infoContentHTML = beacon.description;
+         info.infoTitleHTML = '';
+				 info.infoContentHTML = beacon.user.first_name + ' ' + beacon.user.last_name;
+				 info.infoContentHTML += '<br/>';
+				 info.infoContentHTML += beacon.description;
          info.infoContentHTML += '<br><a href="#' + beacon.id + '">More Information</a>';
 
          // Set custom icon
@@ -54,15 +55,27 @@ $(function() {
 
 	});
 
+  $('#beaconView button.map').click(function() {
+    $('#map').show();
+    $('#beaconView').hide();
+    window.location.hash = '';
+    return false;
+  });
+
   $(window).bind('hashchange', function() {
-    var beaconId = window.location.hash.slice(1,window.location.hash.length);
-    $.getJSON('/beacons/' + beaconId, function(response) {
+    if (window.location.hash.length > 1) {
       $('#map').hide();
       $('#beaconView').show();
-      var beacon = response.beacon;
-      var beacon_user = response.user;
-      console.log({ beacon: beacon, user: beacon_user});
-    });
+      var beaconId = window.location.hash.slice(1,window.location.hash.length);
+      $.getJSON('/beacons/' + beaconId, function(response) {
+        $('#beaconView').each(function() {
+          beacon = $(this);
+          beacon.find('.name').text(response.user.first_name + ' ' + response.user.last_name);
+          beacon.find('.description').text(response.beacon.description);
+          beacon.find('.duration').text(response.beacon.duration + ' hours');
+        });
+      });
+    };
   });
 
 });

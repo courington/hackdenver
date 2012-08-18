@@ -1,6 +1,13 @@
 #mapView.row
 
-	#map
+  #map
 
 
-#beaconView.row
+#beaconView.row{ 'ng-controller' => 'BeaconShowController', style: 'display:none;'}
+  .name
+  .description
+  .duration
+  %button.map
+    View Map
+  %button.respond
+    Respond
