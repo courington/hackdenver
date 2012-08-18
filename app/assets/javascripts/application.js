@@ -33,4 +33,8 @@ $(function() {
 
 	});
 
+
+	$('.beacon').live('click', function() {
+		console.log(this);
+	});
 });
