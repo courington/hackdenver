@@ -4,16 +4,13 @@ class BeaconsController < ApplicationController
     render json: Beacon.all.as_json(include: :user)
   end
 
+  def new
+    @beacon = Beacon.new
+  end
+
   def create
-    if not params[:lat].blank? and not params[:lng].blank? and not params[:description].blank? and not params[:duration].blank?
-      beacon = Beacon.create({
-        :lat         => params[:lat],
-        :lng         => params[:lng],
-        :description => params[:description],
-        :duration    => params[:duration]
-      })
-      render json: {:status => 'success', :id => beacon.id, :lat => beacon.lat, :lng => beacon.lng}.to_json
-    end
+    beacon = Beacon.create(params[:beacon])
+    redirect_to root_path
   end
 
   def show
