@@ -7,5 +7,6 @@ class Beacon
   key :duration, Integer
 
   belongs_to :user
+  validates :user, presence: true
 
 end

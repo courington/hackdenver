@@ -22,15 +22,40 @@ $(function() {
 		// the map global variable :(
 		map = new MQA.TileMap(options);
 
-		// grab beacons at current location
+    // Add your location pin
+    var info = new MQA.Poi({ lat:lat, lng:lng });
+    info.infoTitleHTML = 'Your Location';
+    info.infoContentHTML = '<a href="#">Launch Beacon!</a>';
+    var icon=new MQA.Icon('http://www.mapquestapi.com/staticmap/geticon?uri=poi-blue_1.png',20,29);
+    info.setIcon(icon);
+    map.addShape(info);
+
+ 		// grab beacons at current location
 		$.getJSON('/beacons', { lat: lat, lng: lng }, function(response) {
 			$.each(response, function(i, beacon) {
 				 var info = new MQA.Poi({ lat:beacon.lat, lng:beacon.lng });
-				 //info.infoContentHTML = beacon.user.name;
+         console.log(beacon);
+				 info.infoTitleHTML = beacon.user.first_name + ' ' + beacon.user.last_name;
+				 info.infoContentHTML = beacon.description;
+         info.infoContentHTML += '<br><a class="beacon" data-id="' + beacon.id + '" href="#">More Information</a>';
+
+         // Set custom icon
+         var icon_link = 'http://www.mapquestapi.com/staticmap/geticon?uri=poi-green_1.png';
+         if (beacon.duration <= 1) {
+           icon_link = 'http://www.mapquestapi.com/staticmap/geticon?uri=poi-pink_1.png';
+         } else if (beacon.duration <= 2 ) {
+           icon_link = 'http://www.mapquestapi.com/staticmap/geticon?uri=poi-yellow_1.png';
+         };
+         var icon=new MQA.Icon(icon_link,20,29);
+         info.setIcon(icon);
 				 map.addShape(info);
 			});
 		});
 
 	});
 
+
+	$('.beacon').live('click', function() {
+		console.log(this);
+	});
 });
