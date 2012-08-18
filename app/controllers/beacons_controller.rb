@@ -1,8 +1,7 @@
 class BeaconsController < ApplicationController
 
   def index
-    beacons = Beacon.all
-    render json: beacons, :content_type => 'application/json'
+    render json: Beacon.all.to_json
   end
 
   def create
@@ -18,4 +17,11 @@ class BeaconsController < ApplicationController
     end
   end
 
+  def show
+    beacon = Beacon.find(params[:id])
+    render json: {
+      beacon: beacon.attributes.to_hash.slice('lat', 'lng', 'description', 'duration'),
+      user:  beacon.user
+    }.to_json
+  end
 end
