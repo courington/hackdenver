@@ -30,6 +30,9 @@
 			width: $sixCols * 6;
 			display: inline-block;
 		}
+		.offset1 {
+		 margin-left: $sixCols;
+		}
 		.row {
 			@extend .col6;
 			display: block;

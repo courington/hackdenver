@@ -3,6 +3,8 @@
   #map
 
 #beaconView.row{ 'ng-controller' => 'BeaconShowController', style: 'display:none;'}
+  %button.map
+    &larr; View Map
   .name
   .description
   .duration
@@ -11,10 +13,9 @@
       %img
       .twitter_name
 
-  %button.map
-    View Map
-  %button.respond
-    Respond
+  %div{ class:"col4 offset1"}
+    %button.respond
+      Connect
 
 %nav.row#beaconNav{ style: 'display: none' }
   %div{ class:"col3 pull_left wrapper"}
@@ -22,4 +23,7 @@
 
   %div{ class: "col3 pull_right wrapper" }
     %a{href:"#", class:"ss-icon ss-location inner row"} Filter Beacons
+
+  %div{ class: "col3 pull_right wrapper" }
+    %a{href:"/logout"} Logout
 

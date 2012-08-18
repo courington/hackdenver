@@ -1,0 +1,28 @@
+#beaconView{
+	width: 90%;
+	margin: auto;
+
+	.name{
+		font-size: $biggest-font;
+		padding-bottom: 6px;
+		border-bottom: 1px solid grey;
+	}
+	.description{
+		margin-top: 12px;
+	}
+
+	.duration{
+		margin-top: 12px;
+	}
+	.respond{
+		margin: 16px 0px 16px 0px;
+		width: 100%;
+	}
+
+	button.map{
+		background-color: transparent;
+		font-size: $font-size;
+		border: none;
+		color: #1B5BA9;
+	}
+}
