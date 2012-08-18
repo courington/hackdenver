@@ -1,8 +1,8 @@
 class Beacon
   include MongoMapper::Document
 
-  key :lat, String
-  key :lng, String
+  key :lat, Float
+  key :lng, Float
   key :description, String
   key :duration, Integer
 
