@@ -3,13 +3,14 @@
   #map
 
 #beaconView.row{ 'ng-controller' => 'BeaconShowController', style: 'display:none;'}
+  %button.map
+    View Map
   .name
   .description
   .duration
-  %button.map
-    View Map
-  %button.respond
-    Respond
+  %div{ class:"col4 offset1"}
+    %button.respond
+      Connect
 
 %nav.row#beaconNav{ style: 'display: none' }
   %div{ class:"col3 pull_left wrapper"}
