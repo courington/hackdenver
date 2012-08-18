@@ -58,8 +58,10 @@ $(function() {
     var beaconId = window.location.hash.slice(1,window.location.hash.length);
     $.getJSON('/beacons/' + beaconId, function(response) {
       $('#map').hide();
-      $('#beacon').show();
-      console.log(response);
+      $('#beaconView').show();
+      var beacon = response.beacon;
+      var beacon_user = response.user;
+      console.log({ beacon: beacon, user: beacon_user});
     });
   });
 
