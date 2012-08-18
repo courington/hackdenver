@@ -6,7 +6,6 @@ button {
 	border: 1px solid darken($main-yellow, 5%);
 	@include border-radius($radius);
 	@include transition($tranny);
-	//@include button-shading;
 	cursor: pointer;
 }
 button:hover,
