@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  before_filter :autologin
+  before_filter :require_login
 
   helper_method :current_user
 
@@ -13,18 +13,10 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def autologin
-    unless session.key?(:user_id)
-      fn = Faker::Name.first_name
-      ln = Faker::Name.last_name
-      em = Faker::Internet.email(fn)
-
-      user = User.create!({
-        first_name: fn,
-        last_name: ln,
-        email: em
-      })
-      session[:user_id] = user.id
+  def require_login
+    if not current_user
+      flash[:notice] = 'Please log in'
+      redirect_to :controller => :sessions, :action => :new
     end
   end
 
