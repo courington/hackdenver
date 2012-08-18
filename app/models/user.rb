@@ -5,7 +5,7 @@ class User
   key :last_name  , String
   key :email      , String
 
-  has_many :beacons
+  one :beacon
 
   def full_name
     "#{first_name} #{last_name}"

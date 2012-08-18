@@ -5,11 +5,19 @@ class BeaconsController < ApplicationController
   end
 
   def new
-    @beacon = Beacon.new
+    if not current_user.beacon.blank?
+      redirect_to :action => :edit, :lat => params[:beacon_lat], :lng => params[:beacon_lng]
+    else
+      @beacon = Beacon.new
+    end
+  end
+
+  def edit
+    @beacon = current_user.beacon
   end
 
   def create
-    beacon = Beacon.create(params[:beacon].merge({ user: current_user }))
+    beacon = Beacon.create(params[:beacon].merge({user: current_user}))
     redirect_to root_path
   end
 
@@ -22,15 +30,8 @@ class BeaconsController < ApplicationController
   end
 
   def destroy
-    if not params[:id].blank?
-      if beacon = Beacon.first(:conditions => ['id = ?', params[:id]])
-        beacon.destroy
-        render json: {:status => 'success'}.to_json
-      else
-        render json: {:status => 'none found'}.to_json
-      end
-    else
-      render json: {:status => 'failure'}.to_json
+    if not current_user.beacon.blank?
+      current_user.beacon.destroy
     end
   end
 end
