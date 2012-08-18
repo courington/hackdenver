@@ -44,8 +44,8 @@ $(function() {
 			$.each(response, function(i, beacon) {
 				 var info = new MQA.Poi({ lat:beacon.lat, lng:beacon.lng });
          info.infoTitleHTML = '';
-				 info.infoContentHTML = beacon.user.first_name + ' ' + beacon.user.last_name;
-				 info.infoContentHTML += '<br/>';
+				 info.infoContentHTML = "<h2>"+beacon.user.first_name + ' ' + beacon.user.last_name+"</h2>";
+				 //info.infoContentHTML += '<br/>';
 				 info.infoContentHTML += beacon.description;
          info.infoContentHTML += '<br><a href="#' + beacon.id + '">More Information</a>';
 

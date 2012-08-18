@@ -62,3 +62,28 @@
 		//end
 	}
 }
+
+/*Set the width of the custom InfoWindow and the font for its contents.*/ 
+.mqabasicwnd {
+font:14px arial, helvetica, sans-serif;
+width:210px !important;
+}
+
+/*Use CSS to place the custom 'Close' button at its desired location. Also make sure to change the width and height of the 'Close' button if it's been changed from its default size.*/ 
+.mqabasicwnd-close {
+top:0px !important;
+right:-18px !important;
+width:18px !important;
+height:20px !important;
+}
+
+.mqabasicwnd-content{
+	h2{
+		font-size: $big-font;
+		padding-bottom: 2px;
+		border-bottom: 1px solid grey;
+	}
+	a{
+		color: #1B5BA9;
+	}
+}
