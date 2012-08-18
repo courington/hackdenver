@@ -1,4 +1,22 @@
 #new_session{
 	margin: auto;
-	
+	width: 60%;
+	text-align: center;
+
+	span{
+		font-size: $biggest-font;
+	}
+
+	input{
+		width: 100%;
+		line-height: 32px;
+		font-size: $big-font;
+		margin: 16px 0px 12px 0px;
+	}
+
+	button{
+		margin-top: 10px;
+		width: 100%;
+		font-size: $big-font;
+	}
 }
