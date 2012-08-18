@@ -6,13 +6,14 @@ class BeaconsController < ApplicationController
 
   def create
     if not params[:lat].blank? and not params[:lng].blank? and not params[:description].blank? and not params[:duration].blank?
-      beacon = Beacon.create(
+      beacon = Beacon.create({
         :lat         => params[:lat],
         :lng         => params[:lng],
         :description => params[:description],
-        :duration    => params[:duration]
-      )
-      render json: {:status => 'success', :id => beacon.id}.to_json
+        :duration    => params[:duration],
+        :user        => current_user,
+      })
+      render json: {:status => 'success', :id => beacon.id}
     else
       render json: {:status => 'failure'}.to_json
     end
