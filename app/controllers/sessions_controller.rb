@@ -8,9 +8,13 @@ class SessionsController < ApplicationController
 
   def create
     if not params[:session].blank?
-      user = User.create(:email => params[:session][:email])
-      session[:user_id] = user.id
-      redirect_to root_path
+      if not User.find_by_email(params[:session][:email]).present?
+        user = User.create(:email => params[:session][:email])
+        session[:user_id] = user.id
+        redirect_to root_path
+      else
+        redirect_to :action => :new
+      end
     end
   end
 
