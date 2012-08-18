@@ -7,4 +7,8 @@ class User
 
   has_many :beacons
 
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
 end
