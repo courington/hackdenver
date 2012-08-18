@@ -9,7 +9,7 @@ class BeaconsController < ApplicationController
   end
 
   def create
-    beacon = Beacon.create(params[:beacon])
+    beacon = Beacon.create(params[:beacon].merge({ user: current_user }))
     redirect_to root_path
   end
 
