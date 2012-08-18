@@ -20,13 +20,18 @@ class FullContact
     end
   end
 
-  def self.twitter_json(email)
+  def self.twitter(email)
     response = raw_json(email)
     response = ActiveSupport::JSON.decode(response)
     if response['status'] == 200
       twitter_profile = response['socialProfiles'].select{|p| p['type'] == 'twitter'}
-      twitter_profile.first.to_json if twitter_profile.present?
+      twitter_profile.first if twitter_profile.present?
     end
+  end
+
+  def self.twitter_json(email)
+    response = twitter(email)
+    response.to_json if response.present?
   end
 
   def self.twitter_url(email)

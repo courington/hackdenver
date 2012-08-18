@@ -28,11 +28,11 @@ class BeaconsController < ApplicationController
 
   def show
     beacon = Beacon.find(params[:id])
-    render json: {
-        beacon: beacon.attributes.to_hash.slice('lat', 'lng', 'description', 'duration'),
-        user: beacon.user,
-        twitter: FullContact.twitter_json(beacon.user.email)
-    }.to_json
+    data = {
+      beacon: beacon.attributes.to_hash.slice('lat', 'lng', 'description', 'duration'),
+      user: beacon.user.attributes,
+    }.merge({ twitter: FullContact.twitter(beacon.user.email)})
+    render json: data.to_json
   end
 
   def destroy
