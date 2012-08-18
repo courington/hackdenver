@@ -30,7 +30,7 @@ class BeaconsController < ApplicationController
         beacon.destroy
         render json: {:status => 'success'}.to_json
       else
-        render json: {:status => 'failure'}.to_json
+        render json: {:status => 'none found'}.to_json
       end
     else
       render json: {:status => 'failure'}.to_json
