@@ -6,7 +6,7 @@
     <%= form_for(@session) do |f| %>
         <span>Email</span>
         <br>
-        <%= f.text_field :email, :placeholder => 'Email' %>
+        <%= f.email_field :email, :placeholder => 'Email' %>
         <br>
         <%= f.button 'Login', type: "submit" %>
     <% end %>
