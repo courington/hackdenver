@@ -13,7 +13,7 @@ $(function() {
 		/*Create an object for options*/ 
 		var options = {
 			elt               : document.getElementById('map'),
-			zoom              : 10,
+			zoom              : 14,
 			latLng            : { lat : lat, lng : lng },
 			mtype             : 'map',
 			bestFitMargin     : 0, /* margin offset from the map viewport when applying a bestfit on shapes*/
@@ -35,10 +35,9 @@ $(function() {
 		$.getJSON('/beacons', { lat: lat, lng: lng }, function(response) {
 			$.each(response, function(i, beacon) {
 				 var info = new MQA.Poi({ lat:beacon.lat, lng:beacon.lng });
-         console.log(beacon);
 				 info.infoTitleHTML = beacon.user.first_name + ' ' + beacon.user.last_name;
 				 info.infoContentHTML = beacon.description;
-         info.infoContentHTML += '<br><a class="beacon" data-id="' + beacon.id + '" href="#">More Information</a>';
+         info.infoContentHTML += '<br><a href="#' + beacon.id + '">More Information</a>';
 
          // Set custom icon
          var icon_link = 'http://www.mapquestapi.com/staticmap/geticon?uri=poi-green_1.png';
@@ -55,8 +54,15 @@ $(function() {
 
 	});
 
+  $(window).bind('hashchange', function() {
+    var beaconId = window.location.hash.slice(1,window.location.hash.length);
+    $.getJSON('/beacons/' + beaconId, function(response) {
+      $('#map').hide();
+      $('#beaconView').show();
+      var beacon = response.beacon;
+      var beacon_user = response.user;
+      console.log({ beacon: beacon, user: beacon_user});
+    });
+  });
 
-	$('.beacon').live('click', function() {
-		console.log(this);
-	});
 });
