@@ -5,7 +5,15 @@ class BeaconsController < ApplicationController
   end
 
   def new
-    @beacon = Beacon.new
+    if not current_user.beacon.blank?
+      redirect_to :action => :edit, :lat => params[:beacon_lat], :lng => params[:beacon_lng]
+    else
+      @beacon = Beacon.new
+    end
+  end
+
+  def edit
+    @beacon = current_user.beacon
   end
 
   def create

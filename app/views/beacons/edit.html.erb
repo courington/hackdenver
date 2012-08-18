@@ -1,0 +1,9 @@
+<%= form_for(@beacon) do |f| %>
+    <span>Description</span>
+    <%= f.text_area :description, :placeholder => 'Where are you and what are you doing? ' %>
+    <span>Duration</span>
+    <%= f.select(:duration, options_for_select([['1 hour', '1'], ['2 hours', '2']])) %>
+    <%= f.hidden_field :lat, value: params[:lat] %>
+    <%= f.hidden_field :lng, value: params[:lng] %>
+    <%= f.submit 'Update Beacon' %>
+<% end %>
