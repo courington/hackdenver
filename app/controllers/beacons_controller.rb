@@ -10,12 +10,9 @@ class BeaconsController < ApplicationController
         :lat         => params[:lat],
         :lng         => params[:lng],
         :description => params[:description],
-        :duration    => params[:duration],
-        :user        => current_user,
+        :duration    => params[:duration]
       })
-      render json: {:status => 'success', :id => beacon.id}
-    else
-      render json: {:status => 'failure'}.to_json
+      render json: {:status => 'success', :id => beacon.id, :lat => beacon.lat, :lng => beacon.lng}.to_json
     end
   end
 
