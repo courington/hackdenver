@@ -18,6 +18,14 @@ $smallest-font: .563em; //9px //tiny copy and spacing
 //COLUMN WIDTH
 $sixCols: 16.66666667%;
 
+//BOX SIZING
+@mixin border-box {
+	#{$o}box-sizing: border-box;
+	#{$ff}box-sizing: border-box;
+	#{$wk}box-sizing: border-box;
+	box-sizing: border-box;
+}
+
 // COLOR VARIABLES
 $main-grey: rgb(119, 119, 119);
 $main-red: rgb(253, 65, 40);
@@ -32,6 +40,9 @@ $lt-grey: rgb(219, 219, 219);
 $dk-grey: rgb(71, 71, 71);
 $wht: rgb(248, 248, 248);
 $white: rgb(255,255,255);
+
+$main-green: rgb(150,223,179);
+$dark-green: darken($main-green, 50%);
 
 // VENDOR PREFIXES
 $ff: -moz-;

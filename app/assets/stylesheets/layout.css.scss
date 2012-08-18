@@ -1,0 +1,49 @@
+//layout
+@media all and (max-width: 500px) {
+	body {
+		width: $sixCols * 6;
+		margin: 0 auto;
+		font-family: $main-font;
+		@include border-box;
+		.col1 {
+			width: $sixCols * 1;
+			display: inline-block;
+		}
+		.col2 {
+			width: $sixCols * 2;
+			display: inline-block;
+		}
+		.col3 {
+			width: $sixCols * 3;
+			display: inline-block;
+		}
+		.col4 {
+			width: $sixCols * 4;
+			display: inline-block;
+		}
+		.col5 {
+			width: $sixCols * 5;
+			display: inline-block;
+		}
+		.col6,
+		.row {
+			width: $sixCols * 6;
+			display: inline-block;
+		}
+		.row {
+			display: block;
+		}
+		.pull_right {
+			float: right;
+		}
+		.pull_left {
+			float: left;
+		}
+		.wrapper {
+			padding: $smallest-font $smaller-font;
+		}
+		.inner {
+			padding: $smallest-font $smaller-font;
+		}
+	}
+}
