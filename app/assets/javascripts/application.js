@@ -85,6 +85,9 @@ $(function() {
           beacon.find('.name').text(response.user.first_name + ' ' + response.user.last_name);
           beacon.find('.description').text(response.beacon.description);
           beacon.find('.duration').text(response.beacon.duration + ' hours');
+          if (response.twitter) {
+            beacon.find('.twitter a').href();
+          }
         });
       });
     };

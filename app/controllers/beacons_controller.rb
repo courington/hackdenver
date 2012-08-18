@@ -17,7 +17,8 @@ class BeaconsController < ApplicationController
     beacon = Beacon.find(params[:id])
     render json: {
         beacon: beacon.attributes.to_hash.slice('lat', 'lng', 'description', 'duration'),
-        user: beacon.user
+        user: beacon.user,
+        twitter: FullContact.twitter_json(beacon.user.email)
     }.to_json
   end
 

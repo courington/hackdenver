@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class FullContact
 
   API_KEY = '413171cce3659632'
@@ -11,7 +13,11 @@ class FullContact
         apiKey: API_KEY
       }.to_param
 
-    open(url).read
+    begin
+      open(url).read
+    rescue
+      { status: 500 }.to_json
+    end
   end
 
   def self.twitter_json(email)
