@@ -14,3 +14,4 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'cucumber-rails', '1.2.1', require: false
