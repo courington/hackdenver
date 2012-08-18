@@ -13,7 +13,9 @@ class SessionsController < ApplicationController
         session[:user_id] = user.id
         redirect_to root_path
       else
-        redirect_to :action => :new
+        user = User.find_by_email(params[:session][:email])
+        session[:user_id] = user.id
+        redirect_to root_path
       end
     end
   end
