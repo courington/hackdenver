@@ -1,6 +1,10 @@
-@import "sass_variables.css.scss"
-@import "reset.css.scss"
+@import "sass_variables.css.scss";
+@import "reset.css.scss";
 
 @import url(https://fonts.googleapis.com/css?family=Varela);
 @import "webfonts/ss-social.css";
 @import "webfonts/ss-standard.css";
+
+@import "buttons.css.scss";
+
+@import "layout.css.scss";

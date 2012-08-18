@@ -1,0 +1,16 @@
+//buttons
+button {
+	background: $main-green;
+	font-family: $main-font;
+	padding: $small-font $big-font;
+	border: 1px solid darken($main-green, 25%);
+	@include border-radius($radius);
+	@include transition($tranny);
+	@include button-shading;
+	cursor: pointer;
+}
+button:hover,
+button:focus {
+	outline: none;
+	background: darken($main-green, 10%);
+}
