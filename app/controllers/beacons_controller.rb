@@ -21,8 +21,21 @@ class BeaconsController < ApplicationController
   def show
     beacon = Beacon.find(params[:id])
     render json: {
-      beacon: beacon.attributes.to_hash.slice('lat', 'lng', 'description', 'duration'),
-      user:  beacon.user
+        beacon: beacon.attributes.to_hash.slice('lat', 'lng', 'description', 'duration'),
+        user: beacon.user
     }.to_json
+  end
+
+  def destroy
+    if not params[:id].blank?
+      if beacon = Beacon.first(:conditions => ['id = ?', params[:id]])
+        beacon.destroy
+        render json: {:status => 'success'}.to_json
+      else
+        render json: {:status => 'failure'}.to_json
+      end
+    else
+      render json: {:status => 'failure'}.to_json
+    end
   end
 end

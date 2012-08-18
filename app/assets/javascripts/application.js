@@ -12,7 +12,7 @@ $(function() {
 		/*Create an object for options*/ 
 		var options = {
 			elt               : document.getElementById('map'),
-			zoom              : 10,
+			zoom              : 14,
 			latLng            : { lat : lat, lng : lng },
 			mtype             : 'map',
 			bestFitMargin     : 0, /* margin offset from the map viewport when applying a bestfit on shapes*/
