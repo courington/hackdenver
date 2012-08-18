@@ -12,7 +12,7 @@ $(function() {
 		/*Create an object for options*/ 
 		var options = {
 			elt               : document.getElementById('map'),
-			zoom              : 14,
+			zoom              : 10,
 			latLng            : { lat : lat, lng : lng },
 			mtype             : 'map',
 			bestFitMargin     : 0, /* margin offset from the map viewport when applying a bestfit on shapes*/
@@ -20,7 +20,7 @@ $(function() {
 		};
 
 		// the map global variable :(
-		var map = new MQA.TileMap(options);
+		map = new MQA.TileMap(options);
 
 		// grab beacons at current location
 		$.getJSON('/beacons', { lat: lat, lng: lng }, function(response) {
