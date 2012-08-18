@@ -4,10 +4,15 @@
 
 #beaconView.row{ 'ng-controller' => 'BeaconShowController', style: 'display:none;'}
   %button.map
-    View Map
+    &larr; View Map
   .name
   .description
   .duration
+  %div{class:"twitter row", style: 'display: none;' }
+    %a
+      %img
+      .twitter_name
+
   %div{ class:"col4 offset1"}
     %button.respond
       Connect

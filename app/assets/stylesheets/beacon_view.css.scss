@@ -18,4 +18,24 @@
 		margin: 16px 0px 16px 0px;
 		width: 100%;
 	}
+
+	.twitter{
+		margin: 16px 0px 16px 0px;
+		width: 100%;
+
+		img{
+			width: 36px;
+			float: left;
+		}
+		.twitter_name{
+			float: left;
+		}
+	}
+
+	button.map{
+		background-color: transparent;
+		font-size: $font-size;
+		border: none;
+		color: #1B5BA9;
+	}
 }

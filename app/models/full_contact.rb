@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class FullContact
 
   API_KEY = '413171cce3659632'
@@ -11,16 +13,25 @@ class FullContact
         apiKey: API_KEY
       }.to_param
 
-    open(url).read
+    begin
+      open(url).read
+    rescue
+      { status: 500 }.to_json
+    end
   end
 
-  def self.twitter_json(email)
+  def self.twitter(email)
     response = raw_json(email)
     response = ActiveSupport::JSON.decode(response)
     if response['status'] == 200
       twitter_profile = response['socialProfiles'].select{|p| p['type'] == 'twitter'}
-      twitter_profile.first.to_json if twitter_profile.present?
+      twitter_profile.first if twitter_profile.present?
     end
+  end
+
+  def self.twitter_json(email)
+    response = twitter(email)
+    response.to_json if response.present?
   end
 
   def self.twitter_url(email)
