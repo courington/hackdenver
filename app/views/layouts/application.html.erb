@@ -1,18 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html ng-app>
 <head>
-<title>hd</title>
-<meta name='viewport' content='width=device-width,initial-scale=1'>
-<%= stylesheet_link_tag 'application', media: 'all' %>
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0-alpha.1/jquery.mobile-1.2.0-alpha.1.min.css" />
-<%= csrf_meta_tags %>
+  <title>hd</title>
+  <meta name='viewport' content='width=device-width,initial-scale=1'>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= csrf_meta_tags %>
 </head>
 <body>
-<%= yield %>
-<div id='tail' style='position: absolute; top: -10000px; height: 0px; width: 0px;'>
-  <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
-  <script src="http://code.jquery.com/mobile/1.2.0-alpha.1/jquery.mobile-1.2.0-alpha.1.min.js"></script>
-  <%= javascript_include_tag 'application' %>
-</div>
+  <%= yield %>
+  <div id='tail' style='position: absolute; top: -10000px; height: 0px; width: 0px;'>
+    <script src="http://www.mapquestapi.com/sdk/js/v7.0.s/mqa.toolkit.js?key=Fmjtd%7Cluua25u8n1%2Cb5%3Do5-9625gy"></script> 
+    <%= javascript_include_tag 'application' %>
+  </div>
 </body>
 </html>

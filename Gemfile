@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'haml-rails'
-gem 'rails', '3.2.8'
+gem 'rails' , '3.2.8'
 
 gem 'mongo_mapper'
 gem 'bson_ext'
