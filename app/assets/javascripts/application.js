@@ -21,7 +21,6 @@ $(function() {
 		// the map global variable :(
 		var map = new MQA.TileMap(options);
 
-
 		// grab beacons at current location
 		$.getJSON('/beacons', { lat: lat, lng: lng }, function(response) {
 			$.each(response, function(i, beacon) {
@@ -33,5 +32,4 @@ $(function() {
 
 	});
 
-
-})
+});
