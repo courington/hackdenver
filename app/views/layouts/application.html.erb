@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>hd</title>
+<meta name='viewport' content='width=device-width,initial-scale=1'>
+<%= stylesheet_link_tag 'application', media: 'all' %>
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0-alpha.1/jquery.mobile-1.2.0-alpha.1.min.css" />
+<%= csrf_meta_tags %>
+</head>
+<body>
+<%= yield %>
+<div id='tail' style='position: absolute; top: -10000px; height: 0px; width: 0px;'>
+  <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.2.0-alpha.1/jquery.mobile-1.2.0-alpha.1.min.js"></script>
+  <%= javascript_include_tag 'application' %>
+</div>
+</body>
+</html>
