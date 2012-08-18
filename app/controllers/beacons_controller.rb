@@ -16,6 +16,11 @@ class BeaconsController < ApplicationController
     @beacon = current_user.beacon
   end
 
+  def update
+    current_user.beacon.update_attributes(params[:beacon])
+    redirect_to root_path
+  end
+
   def create
     beacon = Beacon.create(params[:beacon].merge({user: current_user}))
     redirect_to root_path
