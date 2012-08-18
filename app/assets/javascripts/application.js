@@ -1,5 +1,6 @@
 //= require jquery
 //= require create
+//= require destroy
 
 $(function() {
 
