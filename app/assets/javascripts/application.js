@@ -82,9 +82,18 @@ $(function() {
       $.getJSON('/beacons/' + beaconId, function(response) {
         $('#beaconView').each(function() {
           beacon = $(this);
+          beacon.find('.twitter').hide();
           beacon.find('.name').text(response.user.first_name + ' ' + response.user.last_name);
           beacon.find('.description').text(response.beacon.description);
           beacon.find('.duration').text(response.beacon.duration + ' hours');
+          if (response.twitter) {
+            console.log(response.twitter);
+            console.log('https://api.twitter.com/1/users/profile_image?screen_name=' + response.twitter.username + '&size=mini');
+            beacon.find('.twitter a').attr('href',response.twitter.url);
+            beacon.find('.twitter img').attr('src', 'https://api.twitter.com/1/users/profile_image?screen_name=' + response.twitter.username + '&size=mini');
+            beacon.find('.twitter .twitter_name').text(response.twitter.username);
+            beacon.find('.twitter').show();
+          }
         });
       });
     };
