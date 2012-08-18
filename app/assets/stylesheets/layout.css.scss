@@ -1,10 +1,11 @@
 //layout
-@media all and (max-width: 500px) {
+@media all and (max-width: 720px) {
 	body {
 		width: $sixCols * 6;
 		margin: 0 auto;
 		font-family: $main-font;
 		@include border-box;
+		//layout
 		.col1 {
 			width: $sixCols * 1;
 			display: inline-block;
@@ -25,13 +26,14 @@
 			width: $sixCols * 5;
 			display: inline-block;
 		}
-		.col6,
-		.row {
+		.col6 {
 			width: $sixCols * 6;
 			display: inline-block;
 		}
 		.row {
+			@extend .col6;
 			display: block;
+			overflow: hidden;
 		}
 		.pull_right {
 			float: right;
@@ -45,5 +47,15 @@
 		.inner {
 			padding: $smallest-font $smaller-font;
 		}
+		//end layout
+		//tab bar
+		nav {
+			@extend .row;
+			background: $main-tab-color;
+			a {
+				color: $wht;
+			}
+		}
+		//end
 	}
 }
