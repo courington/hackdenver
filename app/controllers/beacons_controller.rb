@@ -17,7 +17,11 @@ class BeaconsController < ApplicationController
   end
 
   def update
-    current_user.beacon.update_attributes(params[:beacon])
+    if params[:commit] == 'Delete'
+      current_user.beacon.destroy
+    else
+      current_user.beacon.update_attributes(params[:beacon])
+    end
     redirect_to root_path
   end
 
